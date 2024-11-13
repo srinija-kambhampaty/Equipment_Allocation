@@ -12,5 +12,6 @@ class MaintenanceTable(tag: Tag) extends Table[Maintenance](tag, "maintenances")
   def description = column[String]("description")
   def maintenanceStatus = column[String]("maintenance_status") // "completed" or "inprogress"
 
+
   def * = (id.?, equipmentId, startDate, endDate, description, maintenanceStatus) <> ((Maintenance.apply _).tupled, Maintenance.unapply)
 }

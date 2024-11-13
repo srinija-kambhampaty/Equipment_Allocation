@@ -25,5 +25,10 @@ class EquipmentRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(im
     val insertQuery = equipmentTableQuery returning equipmentTableQuery.map(_.id)
     db.run(insertQuery += newEquipment)
   }
+
+  // Update the condition status of an equipment item
+  def updateConditionStatus(equipmentId: Long, newStatus: String): Future[Int] = {
+    db.run(equipmentTableQuery.filter(_.id === equipmentId).map(_.conditionStatus).update(newStatus))
+  }
 }
 

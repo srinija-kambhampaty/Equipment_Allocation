@@ -21,10 +21,10 @@ GET     /allocation                     controllers.AllocationRequestController.
 POST    /allocation/:equipment_id        controllers.AllocationRequestController.createAllocation(equipment_id: Long)
 PUT     /allocation/:id                  controllers.AllocationRequestController.returnItem(id: Long)
 
-
 POST    /products/:id                controllers.ProductController.addEquipmentByProductId(id: Long)
 GET     /products/:id                controllers.ProductController.getEquipmentByProductId(id: Long)
 
+GET     /maintenance                     controllers.MaintenanceController.listMaintenances
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

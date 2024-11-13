@@ -6,16 +6,13 @@ import javax.inject.{Inject, Singleton}
 import scala.concurrent.Future
 
 @Singleton
-class EquipmentService @Inject() (equipmentRepository: EquipmentRepository) {
+class EquipmentService @Inject()(equipmentRepository: EquipmentRepository) {
 
-  def list(): Future[Seq[Equipment]] = equipmentRepository.list()
+  // Fetch equipment by product ID
+  def getEquipmentByProductId(productId: Long): Future[Seq[Equipment]] =
+    equipmentRepository.findByProductId(productId)
 
-  def get(id: Long): Future[Option[Equipment]] = equipmentRepository.get(id)
-
-  def create(equipment: Equipment): Future[Long] = equipmentRepository.create(equipment)
-
-  def update(id: Long, equipment: Equipment): Future[Option[Equipment]] =
-    equipmentRepository.update(id, equipment)
-
-  def delete(id: Long): Future[Boolean] = equipmentRepository.delete(id)
+  // Add new equipment
+  def addEquipment(equipment: Equipment): Future[Long] = equipmentRepository.add(equipment)
 }
+

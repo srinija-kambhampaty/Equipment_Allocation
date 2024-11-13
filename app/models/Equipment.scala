@@ -1,15 +1,12 @@
 package models
 
 import play.api.libs.json._
-import play.api.libs.functional.syntax._
 
 case class Equipment(
-                      id: Option[Long] = None,  // id will be auto-incremented
-                      name: String,
-                      category: String,
-                      description: String,
-                      conditionStatus: String,
-                      availabilityStatus: Boolean = true
+                      id: Long,
+                      productId: Long,
+                      conditionStatus: String, // Possible values: "maintenance", "good", "removed"
+                      availableStatus: Boolean // True if available, False if not
                     )
 
 object Equipment {

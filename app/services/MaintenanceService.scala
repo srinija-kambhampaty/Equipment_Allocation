@@ -14,6 +14,7 @@ class MaintenanceService @Inject()(maintenanceRepository: MaintenanceRepository)
 
   // Create a new maintenance record
   def createMaintenance(equipmentId: Long, description: String): Future[Long] = {
+    println(s"the id in createmaintenance: $equipmentId")
     val maintenance = Maintenance(
       equipmentId = equipmentId,
       startDate = LocalDate.now,

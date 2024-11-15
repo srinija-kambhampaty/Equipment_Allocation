@@ -40,4 +40,10 @@ class AllocationRequestRepository @Inject()(dbConfigProvider: DatabaseConfigProv
 
     db.run(query).map(_ > 0) // Return true if the update was successful
   }
+
+  def getAllocationById(allocationId: Long): Future[Option[AllocationRequest]] = {
+    db.run(allocationRequests.filter(_.id === allocationId).result.headOption)
+  }
+
+
 }

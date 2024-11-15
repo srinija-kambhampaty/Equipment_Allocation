@@ -18,8 +18,8 @@ GET     /products                    controllers.ProductController.getProducts
 POST    /products                    controllers.ProductController.addProduct()
 
 GET     /allocation                     controllers.AllocationRequestController.getAllocations
-POST    /allocation/:equipment_id        controllers.AllocationRequestController.createAllocation(equipment_id: Long)
-PUT     /allocation/:id                  controllers.AllocationRequestController.returnItem(id: Long)
+POST    /allocation/:equipment_id       controllers.AllocationRequestController.createAllocation(equipment_id: Long)
+PUT     /allocation/:id                 controllers.AllocationRequestController.returnItem(id: Long)
 
 POST    /products/:id                controllers.ProductController.addEquipmentByProductId(id: Long)
 GET     /products/:id                controllers.ProductController.getEquipmentByProductId(id: Long)

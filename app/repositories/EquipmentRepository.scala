@@ -30,5 +30,10 @@ class EquipmentRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(im
   def updateConditionStatus(equipmentId: Long, newStatus: String): Future[Int] = {
     db.run(equipmentTableQuery.filter(_.id === equipmentId).map(_.conditionStatus).update(newStatus))
   }
+
+  // Fetch equipment by ID
+  def getEquipmentById(equipmentId: Long): Future[Option[Equipment]] = {
+    db.run(equipmentTableQuery.filter(_.id === equipmentId).result.headOption)
+  }
 }
 

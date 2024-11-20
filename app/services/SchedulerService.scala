@@ -7,8 +7,7 @@ import java.util.concurrent.{Executors, ScheduledExecutorService, TimeUnit}
 
 @Singleton
 class SchedulerService @Inject()(allocationservice: AllocationRequestService)(implicit ec: ExecutionContext) {
-  // Specify the time you want to run the tasks (e.g., 8:00 AM)
-  private val dailyExecutionTime: LocalTime = LocalTime.of(18, 27)
+  private val dailyExecutionTime: LocalTime = LocalTime.of(15, 6)
   private val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
 
   // Start the scheduler

@@ -1,6 +1,5 @@
 package controllers
 
-import models.Maintenance
 import play.api.mvc._
 import services.MaintenanceService
 import play.api.libs.json._

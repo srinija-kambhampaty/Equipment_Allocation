@@ -11,7 +11,7 @@ case class AllocationRequest(
                               requestDate: LocalDate,
                               expectedReturnDate: LocalDate,
                               returnStatus: String, // "pending", "returned", "overdue"
-                              returnDate: Option[LocalDate] = None, // Updated upon return
+                              returnDate: Option[LocalDate] = None,
                               returnCondition: Option[String] = None // "good", "maintenance"
                             )
 

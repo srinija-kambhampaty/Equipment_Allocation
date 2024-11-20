@@ -23,7 +23,7 @@ class AllocationRequestRepository @Inject()(dbConfigProvider: DatabaseConfigProv
   // Check if equipment is available
   def isEquipmentAvailable(equipmentId: Long): Future[Boolean] = {
     val query = allocationRequests.filter(req => req.equipmentId === equipmentId && req.returnStatus === "pending").exists.result
-    db.run(query).map(!_) // Return true if no pending allocation exists
+    db.run(query).map(!_)
   }
 
   // Create a new allocation request
@@ -37,8 +37,7 @@ class AllocationRequestRepository @Inject()(dbConfigProvider: DatabaseConfigProv
     val query = allocationRequests.filter(_.id === id)
       .map(req => (req.returnStatus, req.returnDate, req.returnCondition))
       .update(("returned", Some(returnDate), Some(returnCondition)))
-
-    db.run(query).map(_ > 0) // Return true if the update was successful
+    db.run(query).map(_ > 0)
   }
 
   def getAllocationById(allocationId: Long): Future[Option[AllocationRequest]] = {

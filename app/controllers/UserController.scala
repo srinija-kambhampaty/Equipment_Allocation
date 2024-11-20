@@ -4,7 +4,6 @@ import models.User
 import play.api.mvc._
 import services.UserService
 import play.api.libs.json._
-
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 

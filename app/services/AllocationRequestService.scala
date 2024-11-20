@@ -84,7 +84,6 @@ class AllocationRequestService @Inject()(
     allocationRequestRepository.list().map { allocationRequests =>
       allocationRequests.foreach { allocationRequest =>
         if (allocationRequest.expectedReturnDate.isBefore(currentDate) && allocationRequest.returnStatus != "returned") {
-          // Send overdue reminder to Kafka
           overdueReminderProducer.sendOverdueReminder(allocationRequest)
         }
       }

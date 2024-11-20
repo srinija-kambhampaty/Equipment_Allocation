@@ -36,8 +36,8 @@ class UserRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
 
     // Return the updated user if successfully updated
     db.run(updateQuery).flatMap {
-      case 0 => Future.successful(None) // No rows updated, return None
-      case _ => get(id) // User updated, fetch the updated record
+      case 0 => Future.successful(None)
+      case _ => get(id)
     }
   }
 

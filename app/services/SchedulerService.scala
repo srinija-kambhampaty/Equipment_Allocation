@@ -10,25 +10,23 @@ class SchedulerService @Inject()(allocationservice: AllocationRequestService)(im
   private val dailyExecutionTime: LocalTime = LocalTime.of(15, 6)
   private val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
 
-  // Start the scheduler
   startDailyTaskScheduler()
 
   // Function to calculate the initial delay until the specified time
   private def calculateInitialDelay(targetTime: LocalTime): Long = {
     val now = LocalDateTime.now()
     val targetDateTime = if (now.toLocalTime.isBefore(targetTime)) {
-      now.toLocalDate.atTime(targetTime) // Today at the target time
+      now.toLocalDate.atTime(targetTime) //Today at the target time
     } else {
       now.toLocalDate.plusDays(1).atTime(targetTime) // Tomorrow at the target time
     }
-    Duration.between(now, targetDateTime).getSeconds // Return the delay in seconds
+    Duration.between(now, targetDateTime).getSeconds
   }
 
   // Function to start the daily task scheduler
   private def startDailyTaskScheduler(): Unit = {
     println("inside the start daily schdeuler")
     val initialDelay = calculateInitialDelay(dailyExecutionTime)
-    // Schedule the tasks to run daily at the specified time
     scheduler.scheduleAtFixedRate(
       new Runnable {
         override def run(): Unit = {

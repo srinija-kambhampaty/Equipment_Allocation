@@ -4,8 +4,6 @@ import models.AllocationRequest
 import play.api.mvc._
 import services.AllocationRequestService
 import play.api.libs.json._
-
-import java.time.LocalDate
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 

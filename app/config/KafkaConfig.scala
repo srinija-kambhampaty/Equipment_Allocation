@@ -4,8 +4,7 @@ import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig}
 import java.util.Properties
 
 object KafkaConfig {
-  val brokerList = "localhost:9092" // Replace with your Kafka broker address
-
+  val brokerList = "localhost:9092"
   def producerProps: Properties = {
     val props = new Properties()
     props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, brokerList)

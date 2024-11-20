@@ -14,14 +14,14 @@ class EquipmentRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(im
   import dbConfig._
   import profile.api._
 
-  private val equipmentTableQuery = TableQuery[EquipmentTable] // Renamed for clarity
+  private val equipmentTableQuery = TableQuery[EquipmentTable]
 
   // Fetch equipment by product ID
   def findByProductId(productId: Long): Future[Seq[Equipment]] =
     db.run(equipmentTableQuery.filter(_.productId === productId).result)
 
   // Add new equipment
-  def add(newEquipment: Equipment): Future[Long] = { // Renamed parameter for clarity
+  def add(newEquipment: Equipment): Future[Long] = {
     val insertQuery = equipmentTableQuery returning equipmentTableQuery.map(_.id)
     db.run(insertQuery += newEquipment)
   }
